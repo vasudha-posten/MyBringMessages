@@ -1,77 +1,61 @@
-  
 {
-    "workflowApiVersion": "1.1",
+    "workflowApiVersion": "1.0",
     "metaData": {
-        "icon": "images/icon.png",
-        "iconSmall": "images/iconSmall.png",
-        "category": "message"
+        "version": "2.0",
+        "icon": "images/jb-icon.jpg",
+        "iconSmall": "images/jb-icon.jpg"
     },
     "type": "REST",
     "lang": {
         "en-US": {
-            "name": "MyBring Message",
-          "description": "A Template for a custom Journey Builder activity",
-          "step1Label": "Configure Activity"
+            "name": "Desk.com Create Case",
+            "description": "Activity for creating a case via Desk.com API."
         }
     },
     "arguments": {
-        "execute": {
-           "inArguments":[
-				{
-                    "emailAddress": "{{Contract.Attribute.TestCustomActivity.Email}}",
-		    "Name" : "{{Contract.Attribute.TestCustomActivity.Name}}",
-		    "Contactkey": "{{Contract.Attribute.TestCustomActivity.ContactId}}"
-                }									
+        "execute": {       
+			"inArguments":[
+				{ "firstName":"{{Contact.Attribute.__your-de-name__.FirstName}}"},
+				{ "lastName":"{{Contact.Attribute.__your-de-name__.LastName}}"},
+				{ "emailAddress": "{{Contact.Default.Email}}"}							
 			],
-          "outArguments": [],
-          "url": "https://customactivityapp.herokuapp.com/journeybuilder/execute",
-           "verb": "POST",
+            "outArguments": [
+            	{ "caseID":"number" }
+			],			
+			"url": "https://customactivityapp.herokuapp.com/ixn/activities/create-case/execute/",
+            "verb": "POST",
             "body": "",
             "header": "",
             "format": "json",
-            "useJwt": true,
+            "useJwt": false,
             "timeout": 10000
         }
     },
     "configurationArguments": {
-     "applicationExtensionKey": "a20a1b28-cff6-4f08-974e-7a3ef9b31094",
-      "save": {
-        "url": "https://customactivityapp.herokuapp.com/journeybuilder/save",
-        "verb": "POST",
-        "useJwt": true
-       },
-       "publish": {
-        "url": "https://customactivityapp.herokuapp.com/journeybuilder/publish",
-           "verb": "POST",
-        "useJwt": true
-       },
-      "stop": {
-        "url": "https://customactivityapp.herokuapp.com/journeybuilder/stop",
-         "verb": "POST",
-        "useJwt": true
-      },
-      "validate": {
-        "url": "https://customactivityapp.herokuapp.com/journeybuilder/validate",
-        "verb": "POST",
-																																																        "useJwt": true
-      }
-    },
-    "wizardSteps": [
-        { "label": "Configure Activity", "key": "step1" }
-    ],
-    "userInterfaces": {
-        "configModal": {
-            "height": 400,
-            "width": 500,
-          "fullscreen": false
+    	"applicationExtensionKey": "a20a1b28-cff6-4f08-974e-7a3ef9b31094",
+        "defaults": { "priority": "4"},             
+        "save": {
+        	"url": "https://customactivityapp.herokuapp.com/ixn/activities/create-case/save/",
+            "body": "",
+            "verb": "POST",
+            "useJwt": false
+        },
+        "publish": {
+        	"url": "https://customactivityapp.herokuapp.com/ixn/activities/create-case/publish/",
+            "verb": "POST",
+            "body": "",
+            "useJwt": false
+        },
+        "validate": {
+        	"url": "https://customactivityapp.herokuapp.com/ixn/activities/create-case/validate/",
+            "verb": "POST",
+            "body": "",
+            "useJwt": false            
         }
     },
-    "schema": {
-        "arguments": {
-            "execute": {
-                "inArguments": [],
-                "outArguments": []
-            }
-        }
+    "edit": {
+    	"url": "https://customactivityapp.herokuapp.com/ixn/activities/create-case/",
+        "height": 400,
+        "width": 500
     }
 }
