@@ -13,15 +13,14 @@
         }
     },
     "arguments": {
-        "execute": {       
-			"inArguments":[
-				{ "firstName":"{{Contact.Attribute.__your-de-name__.FirstName}}"},
-				{ "lastName":"{{Contact.Attribute.__your-de-name__.LastName}}"},
-				{ "emailAddress": "{{Contact.Default.Email}}"}							
+         "inArguments":[
+				{
+                    "emailAddress": "{{Contract.Attribute.TestCustomActivity.Email}}",
+		    "Name" : "{{Contract.Attribute.TestCustomActivity.Name}}",
+		    "Contactkey": "{{Contract.Attribute.TestCustomActivity.ContactId}}"
+                }									
 			],
-            "outArguments": [
-            	{ "caseID":"number" }
-			],			
+          "outArguments": [],			
 			"url": "https://customactivityapp.herokuapp.com/ixn/activities/create-case/execute/",
             "verb": "POST",
             "body": "",
