@@ -10,7 +10,7 @@
     "Drew Simmons <drew.simmons@salesforce.com>"
   ],  
   "dependencies": {
-    "express": "~3.5.0",
+    "express": "~4.17.1",
     "fuel": "~0.4.1",
     "require": "~0.5.0",
     "jwt-simple": "~0.1.0",
